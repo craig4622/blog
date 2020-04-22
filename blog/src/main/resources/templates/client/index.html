@@ -30,6 +30,39 @@
             </article>
         </div>
 
+        <div class="modal-footer no-margin-top">
+            <ul class="pagination pull-right no-margin">
+
+                <!-- 首页 -->
+                <li>
+                    <a th:href="'/blog/getBlogListByPage?current=1&size=2'">首页</a>
+                </li>
+
+                <!-- 上一页 -->
+                <li th:if="${tArticleList.current > 1}">
+                    <a th:href="'/blog/getBlogListByPage?current=' + ${tArticleList.current-1}+'&size=2'" th:text="上一页"></a>
+                </li>
+                <li th:if="${tArticleList.current == 1}">
+                    <a href="#" th:text="上一页"></a>
+                </li>
+                当前页数：<span th:text="${tArticleList.current}"></span>
+
+                <!-- 下一页 -->
+                <li th:if="${tArticleList.current < tArticleList.pages}">
+                    <a th:href="'/blog/getBlogListByPage?current=' + ${tArticleList.current+1}+'&size=2'" th:text="下一页"></a>
+                </li>
+                <li th:if="${tArticleList.current == tArticleList.pages}">
+                    <a href="#" th:text="下一页"></a>
+                </li>
+
+                <!-- 尾页 -->
+                <li>
+                    <a th:href="'/blog/getBlogListByPage?current=' + ${tArticleList.pages}+'&size=2'">尾页</a>
+                </li>
+
+            </ul>
+        </div>
+
 
 
 
